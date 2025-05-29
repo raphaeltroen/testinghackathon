@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Manager</title>
+    <link rel="stylesheet" href="comment_manager_style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="search-section">
+                <h2>Search Comments</h2>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search for comments...">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div class="filter-options">
+                    <label class="filter-label">
+                        <input type="checkbox" id="positive-filter">
+                        Positive Comments
+                    </label>
+                    <label class="filter-label">
+                        <input type="checkbox" id="negative-filter">
+                        Negative Comments
+                    </label>
+                    <label class="filter-label">
+                        <input type="checkbox" id="questions-filter">
+                        Questions
+                    </label>
+                    <label class="filter-label">
+                        <input type="checkbox" id="suggestions-filter">
+                        Suggestions
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="comments-header">
+                <h2>Comments</h2>
+                <div class="sort-options">
+                    <select id="sort-select">
+                        <option value="recent">Most Recent</option>
+                        <option value="likes">Most Likes</option>
+                        <option value="replies">Most Replies</option>
+                    </select>
+                </div>
+            </div>
+            <div class="comments-container">
+                <!-- Example Comments -->
+                <div class="comment-card">
+                    <div class="comment-header">
+                        <img src="https://ui-avatars.com/api/?name=JD&background=fff7f7&color=FF0000" alt="User Avatar" class="user-avatar">
+                        <div class="comment-info">
+                            <h3 class="username">John Doe</h3>
+                            <span class="timestamp">2 hours ago</span>
+                        </div>
+                        <div class="comment-type positive">Positive</div>
+                    </div>
+                    <p class="comment-text">This video was incredibly helpful! I especially loved the detailed explanations and practical examples. Keep up the great work! 👍</p>
+                    <div class="comment-stats">
+                        <span>❤️ 24 likes</span>
+                        <span>💬 3 replies</span>
+                    </div>
+                </div>
+
+                <div class="comment-card">
+                    <div class="comment-header">
+                        <img src="https://ui-avatars.com/api/?name=AS&background=fff7f7&color=FF0000" alt="User Avatar" class="user-avatar">
+                        <div class="comment-info">
+                            <h3 class="username">Alice Smith</h3>
+                            <span class="timestamp">5 hours ago</span>
+                        </div>
+                        <div class="comment-type suggestion">Suggestion</div>
+                    </div>
+                    <p class="comment-text">Could you make a tutorial about advanced techniques? I think many of us would benefit from that kind of content!</p>
+                    <div class="comment-stats">
+                        <span>❤️ 18 likes</span>
+                        <span>💬 2 replies</span>
+                    </div>
+                </div>
+
+                <div class="comment-card">
+                    <div class="comment-header">
+                        <img src="https://ui-avatars.com/api/?name=MB&background=fff7f7&color=FF0000" alt="User Avatar" class="user-avatar">
+                        <div class="comment-info">
+                            <h3 class="username">Mike Brown</h3>
+                            <span class="timestamp">1 day ago</span>
+                        </div>
+                        <div class="comment-type question">Question</div>
+                    </div>
+                    <p class="comment-text">At 5:23, you mentioned a special technique. Could you explain that part in more detail? I'm having trouble understanding it.</p>
+                    <div class="comment-stats">
+                        <span>❤️ 12 likes</span>
+                        <span>💬 4 replies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="comment_manager_script.js"></script>
+</body>
+</html> 

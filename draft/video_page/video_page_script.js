@@ -31,3 +31,11 @@ if (suggestionsTab) {
         window.location.href = suggestionsTab.getAttribute('href');
     });
 }
+
+const commentsManagerTab = document.getElementById('comments-manager-tab');
+if (commentsManagerTab) {
+    commentsManagerTab.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = commentsManagerTab.getAttribute('href');
+    });
+}
