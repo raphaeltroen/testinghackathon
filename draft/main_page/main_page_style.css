@@ -1,10 +1,10 @@
 /* Modern color scheme and variables */
 :root {
-    --primary-color: #6C63FF;
-    --background-color: #f8f9fa;
-    --text-color: #2d3436;
-    --bubble-color: rgba(108, 99, 255, 0.1);
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --primary-color: #FF0000;
+    --background-color: #fff7f7;
+    --text-color: #282828;
+    --bubble-color: rgba(255, 0, 0, 0.1);
+    --shadow-color: rgba(255, 0, 0, 0.1);
 }
 
 /* Base styles */
@@ -35,8 +35,13 @@ body {
 
 /* Input section styles */
 .input-section {
+    position: relative;
+    z-index: 1;
     text-align: center;
     margin-bottom: 3rem;
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 30px;
 }
 
 h1 {
@@ -65,7 +70,7 @@ h1 {
 }
 
 #url-input:focus {
-    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.3);
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
 }
 
 #submit-btn {
@@ -80,12 +85,15 @@ h1 {
 }
 
 #submit-btn:hover {
+    background-color: #cc0000;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px var(--shadow-color);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
 }
 
 /* Instruction bubble styles */
 .instruction-bubble {
+    position: relative;
+    z-index: 1;
     background-color: var(--bubble-color);
     padding: 2rem;
     border-radius: 20px;
@@ -116,6 +124,7 @@ h1 {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: -1;
 }
 
 .comment-bubble {
@@ -124,30 +133,57 @@ h1 {
     padding: 1rem 1.5rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px var(--shadow-color);
-    opacity: 0.6;
+    opacity: 0.4;
     animation: float 20s infinite linear;
+    max-width: 250px;
+    width: 250px; /* Fixed width for better control */
 }
 
-/* Position comments at different spots */
-.comment-bubble:nth-child(1) { top: 10%; left: 5%; animation-delay: -2s; }
-.comment-bubble:nth-child(2) { top: 20%; right: 5%; animation-delay: -5s; }
-.comment-bubble:nth-child(3) { bottom: 15%; left: 10%; animation-delay: -9s; }
-.comment-bubble:nth-child(4) { bottom: 30%; right: 10%; animation-delay: -13s; }
-.comment-bubble:nth-child(5) { top: 50%; right: 15%; animation-delay: -17s; }
+/* Completely separated positions for bubbles */
+.comment-bubble:nth-child(1) { 
+    top: 5%; 
+    left: 5%; 
+    animation-delay: -2s;
+    animation-duration: 23s;
+}
+.comment-bubble:nth-child(2) { 
+    top: 5%; 
+    right: 5%; 
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+.comment-bubble:nth-child(3) { 
+    bottom: 15%; 
+    left: 5%; 
+    animation-delay: -9s;
+    animation-duration: 22s;
+}
+.comment-bubble:nth-child(4) { 
+    bottom: 15%; 
+    right: 5%; 
+    animation-delay: -13s;
+    animation-duration: 24s;
+}
+.comment-bubble:nth-child(5) { 
+    left: 40%; 
+    bottom: 40%; 
+    animation-delay: -17s;
+    animation-duration: 26s;
+}
 
-/* Floating animation */
+/* Updated floating animation with smaller, more controlled movements */
 @keyframes float {
     0% {
         transform: translate(0, 0) rotate(0deg);
     }
     25% {
-        transform: translate(10px, 15px) rotate(2deg);
+        transform: translate(10px, 0) rotate(0.5deg);
     }
     50% {
-        transform: translate(0, 30px) rotate(0deg);
+        transform: translate(10px, 10px) rotate(0deg);
     }
     75% {
-        transform: translate(-10px, 15px) rotate(-2deg);
+        transform: translate(0, 10px) rotate(-0.5deg);
     }
     100% {
         transform: translate(0, 0) rotate(0deg);
