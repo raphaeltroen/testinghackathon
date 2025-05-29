@@ -156,10 +156,10 @@
                 <p>Discover sentiment patterns and explore common themes in your comments. See what viewers loved, what could be improved, and identify trending topics in the discussion.</p>
             </div>
 
-            <div class="feature-box">
+            <a class="feature-box" id="suggestions-tab" href="../suggestions_page/suggestions_page_index.html">
                 <h3>Suggestions</h3>
                 <p>Get insights into what your audience wants next. View content requests, improvement suggestions, and a curated wishlist based on viewer comments and engagement patterns.</p>
-            </div>
+            </a>
 
             <div class="feature-box">
                 <h3>The Typical Viewer</h3>
@@ -208,22 +208,6 @@
         </div>
     </div>
 
-    <script>
-        // Show popup when clicking the button
-        document.getElementById('typical-viewer-btn').addEventListener('click', function() {
-            document.getElementById('popup-overlay').style.display = 'flex';
-        });
-
-        // Close popup when clicking the close button or outside the popup
-        document.querySelector('.close-button').addEventListener('click', function() {
-            document.getElementById('popup-overlay').style.display = 'none';
-        });
-
-        document.getElementById('popup-overlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-            }
-        });
-    </script>
+    <script src="video_page_script.js"></script>
 </body>
 </html>

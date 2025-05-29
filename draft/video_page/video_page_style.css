@@ -279,3 +279,22 @@ body::before {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+a.feature-box {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+a.feature-box:visited {
+    color: inherit;
+}
+
+a.feature-box:hover, a.feature-box:focus {
+    text-decoration: none;
+    color: inherit;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}

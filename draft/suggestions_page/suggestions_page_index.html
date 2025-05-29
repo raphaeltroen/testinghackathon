@@ -6,15 +6,34 @@
     <title>Suggestions - Your App Name</title>
     <link rel="stylesheet" href="../../style_main.css">
     <style>
+        :root {
+            --primary-color: #FF0000;
+            --background-color: #fff7f7;
+            --text-color: #282828;
+            --bubble-color: rgba(255, 0, 0, 0.08);
+            --shadow-color: rgba(255, 0, 0, 0.10);
+            --glass-bg: rgba(255,255,255,0.7);
+            --glass-border: rgba(255,0,0,0.08);
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
         body {
-            background: #f7f8fa;
+            background: linear-gradient(135deg, #fff7f7 0%, #ffeaea 100%);
             font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--text-color);
             margin: 0;
             padding: 0;
+            height: 100vh;
+            overflow: hidden;
         }
         .container {
             display: flex;
             height: 100vh;
+            min-height: 0;
+            max-height: 100vh;
+            gap: 1.5rem;
         }
         .left-card {
             flex: 1.2;
@@ -22,19 +41,25 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            background: #fff;
+            background: var(--glass-bg);
             border-radius: 2.5rem;
-            margin: 2rem 1rem 2rem 2rem;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
-            padding: 2.5rem 2rem;
+            margin: 1.5rem 0.5rem 1.5rem 1.5rem;
+            box-shadow: 0 8px 32px 0 var(--shadow-color), 0 1.5px 8px 0 rgba(255,0,0,0.04);
+            padding: 1.5rem 1rem;
             min-width: 320px;
+            border: 1.5px solid var(--glass-border);
+            backdrop-filter: blur(8px);
+            max-height: calc(100vh - 3rem);
+            overflow: hidden;
         }
         .left-card h2 {
             margin-top: 0;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #2d3748;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
             margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            font-family: 'Segoe UI Semibold', 'Segoe UI', Arial, sans-serif;
         }
         .viewer-list {
             list-style: none;
@@ -43,74 +68,189 @@
             width: 100%;
         }
         .viewer-list li {
-            background: #f1f5f9;
+            background: var(--bubble-color);
             border-radius: 1.2rem;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            color: #374151;
-            box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.06);
+            padding: 1.1rem 1.7rem;
+            margin-bottom: 1.1rem;
+            font-size: 1.13rem;
+            color: var(--text-color);
+            box-shadow: 0 2px 12px 0 var(--shadow-color);
+            word-break: break-word;
+            overflow-wrap: break-word;
+            min-height: 2.5em;
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--glass-border);
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+        .viewer-list li:hover {
+            background: #fff;
+            box-shadow: 0 4px 24px 0 var(--shadow-color);
         }
         .right-section {
             flex: 2;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            padding: 2.5rem 2rem 2.5rem 1rem;
+            align-items: flex-end;
+            padding: 1.5rem 1.5rem 1.5rem 0.5rem;
+            position: relative;
+            max-height: 100vh;
+            overflow: hidden;
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            align-self: flex-end;
+            margin-bottom: 0.2rem;
+            width: auto;
+        }
+        .profile-pic {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 4px 18px 0 var(--shadow-color), 0 1.5px 8px 0 rgba(255,0,0,0.04);
+            border: 3px solid var(--primary-color);
+            margin-right: 1.1rem;
+            margin-left: 0;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+        .profile-pic:hover {
+            box-shadow: 0 8px 32px 0 var(--shadow-color);
         }
         .app-name {
-            align-self: flex-end;
             font-size: 2.2rem;
-            font-weight: 800;
-            color: #3b82f6;
-            margin-bottom: 1.2rem;
-            letter-spacing: 1px;
+            font-weight: 900;
+            color: var(--primary-color);
+            letter-spacing: 1.2px;
+            font-family: 'Segoe UI Black', 'Segoe UI', Arial, sans-serif;
+            text-shadow: 0 2px 12px rgba(255,0,0,0.07);
         }
-        .tab {
-            background: #e0e7ff;
-            color: #3730a3;
-            font-weight: 600;
-            border-radius: 1.5rem;
-            padding: 0.7rem 2.5rem;
-            font-size: 1.1rem;
+        .tab-info-suggestions-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            max-width: 100%;
+            margin-top: 2.5rem;
+            max-height: calc(100vh - 3rem);
+            overflow: hidden;
+        }
+        .tab-info {
+            background: #fff;
+            color: var(--primary-color);
+            font-weight: 700;
+            border-radius: 1.5rem 1.5rem 0 0;
+            padding: 1.7rem 4.5rem 1.7rem 4.5rem;
+            font-size: 1.45rem;
+            margin-bottom: 0;
+            box-shadow: 0 2px 12px 0 var(--shadow-color), 0 2px 0 0 var(--primary-color);
+            align-self: flex-end;
+            border: 1.5px solid var(--primary-color);
+            border-bottom: none;
+            letter-spacing: 0.5px;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 2;
+            position: relative;
+            max-height: 4.5rem;
+            overflow: hidden;
+        }
+        .suggestion-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
+            min-height: 420px;
+            width: 100%;
+            margin-top: 0;
             margin-bottom: 2.5rem;
-            box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.08);
+            background: var(--glass-bg);
+            border-radius: 0 0 1.5rem 1.5rem;
+            box-shadow: 0 2px 12px 0 var(--shadow-color);
+            border: 1.5px solid var(--primary-color);
+            border-top: none;
+            padding: 2rem 4.5rem 2rem 4.5rem;
+            box-sizing: border-box;
+            z-index: 1;
+            position: relative;
+            max-height: 27rem;
+            overflow: hidden;
+        }
+        .suggestion-info {
+            background: var(--bubble-color);
+            color: var(--primary-color);
+            font-size: 1.18rem;
+            font-weight: 500;
+            border-radius: 1.2rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.3rem;
+            box-shadow: 0 2px 12px 0 var(--shadow-color);
+            max-width: 100%;
+            text-align: right;
+            border: 1.5px solid var(--glass-border);
+            letter-spacing: 0.1px;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            max-height: 4.5rem;
+            overflow: hidden;
         }
         .suggestion-buttons {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.7rem;
             width: 100%;
-            align-items: flex-start;
+            align-items: flex-end;
+            max-width: 100%;
+            max-height: 15rem;
+            overflow: hidden;
         }
         .suggestion-btn {
             border: none;
             outline: none;
             border-radius: 2rem;
-            background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+            background: linear-gradient(90deg, #ff6a6a 0%, #ff0000 100%);
             color: #fff;
-            font-size: 1.3rem;
-            font-weight: 600;
-            padding: 1.2rem 0;
-            width: 33vw;
-            min-width: 260px;
-            max-width: 420px;
+            font-size: 1.32rem;
+            font-weight: 700;
+            padding: 1.45rem 0;
+            width: 90%;
+            min-width: 220px;
+            max-width: 700px;
             cursor: pointer;
-            box-shadow: 0 4px 16px 0 rgba(59, 130, 246, 0.10);
-            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 24px 0 var(--shadow-color);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            text-align: left;
+            padding-left: 1.5rem;
+            border: 1.5px solid var(--glass-border);
+            letter-spacing: 0.1px;
+            backdrop-filter: blur(2px);
+            max-height: 4.5rem;
+            overflow: hidden;
         }
         .suggestion-btn:hover {
-            background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+            background: linear-gradient(90deg, #ff0000 0%, #ff6a6a 100%);
             transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 32px 0 var(--shadow-color);
         }
         @media (max-width: 900px) {
             .container {
                 flex-direction: column;
+                gap: 1.2rem;
             }
             .left-card, .right-section {
                 margin: 1rem;
                 padding: 1.5rem;
                 min-width: unset;
+            }
+            .suggestion-section {
+                margin-bottom: 1rem;
             }
             .suggestion-btn {
                 width: 90vw;
@@ -132,12 +272,22 @@
             </ul>
         </div>
         <div class="right-section">
-            <div class="app-name">YourAppName</div>
-            <div class="tab">Suggestions</div>
-            <div class="suggestion-buttons">
-                <button class="suggestion-btn">Suggestion 1</button>
-                <button class="suggestion-btn">Suggestion 2</button>
-                <button class="suggestion-btn">Suggestion 3</button>
+            <div class="app-header">
+                <div class="profile-pic">
+                    <img src="https://ui-avatars.com/api/?name=U&background=fff7f7&color=FF0000&size=72" alt="Profile" style="width:100%;height:100%;object-fit:cover;" />
+                </div>
+                <div class="app-name">YourAppName</div>
+            </div>
+            <div class="tab-info-suggestions-wrap">
+                <div class="tab-info">Suggestions</div>
+                <div class="suggestion-section">
+                    <div class="suggestion-info">These are future video ideas for you, the content creator, based on what your audience is interested in!</div>
+                    <div class="suggestion-buttons">
+                        <div class="suggestion-btn">Suggestion 1: How to grow your channel in 2024</div>
+                        <div class="suggestion-btn">Suggestion 2: Deep dive into editing techniques</div>
+                        <div class="suggestion-btn">Suggestion 3: Collaborating with other creators</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
