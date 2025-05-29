@@ -1,3 +1,16 @@
+// Load video data from backend
+document.addEventListener('DOMContentLoaded', function() {
+    // Get video data from the YouTubeAnalyzer
+    if (window.youtubeAnalyzer && window.youtubeAnalyzer.isInitialized()) {
+        const videoData = window.youtubeAnalyzer.getVideoData();
+        if (videoData) {
+            // Update thumbnail and title
+            document.getElementById('video-thumbnail').src = videoData.thumbnail_url;
+            document.getElementById('video-title').textContent = videoData.title;
+        }
+    }
+});
+
 // Show popup when clicking the button
 const typicalViewerBtn = document.getElementById('typical-viewer-btn');
 if (typicalViewerBtn) {

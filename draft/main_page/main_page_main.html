@@ -17,6 +17,13 @@
                 <input type="text" id="url-input" placeholder="Enter YouTube URL">
                 <button id="submit-btn">Read Comments</button>
             </div>
+            <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing video comments...</p>
+            </div>
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Error analyzing video. Please check the URL and try again.</p>
+            </div>
         </div>
         <div style="display: flex; width: 100%; margin-top: -1.5rem;">
             <div class="instruction-bubble" style="margin-left:calc(50% - 250px); margin-top:0.5rem;">
@@ -37,6 +44,43 @@
             <div class="comment-bubble">Subscribed! Can't wait for the next video 🌟</div>
         </div>
     </div>
-    <script src="main_page_script.js"></script>
+
+    <script src="../backend_handler.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitBtn = document.getElementById('submit-btn');
+            const urlInput = document.getElementById('url-input');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const errorMessage = document.getElementById('error-message');
+
+            async function handleSubmit() {
+                const url = urlInput.value.trim();
+                if (!url) {
+                    alert('Please enter a YouTube URL');
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.disabled = true;
+                loadingIndicator.style.display = 'flex';
+                errorMessage.style.display = 'none';
+
+                try {
+                    await window.youtubeAnalyzer.initializeVideo(url);
+                } catch (error) {
+                    console.error('Error:', error);
+                    errorMessage.style.display = 'block';
+                    loadingIndicator.style.display = 'none';
+                } finally {
+                    submitBtn.disabled = false;
+                }
+            }
+
+            submitBtn.addEventListener('click', handleSubmit);
+            urlInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') handleSubmit();
+            });
+        });
+    </script>
 </body>
 </html>
