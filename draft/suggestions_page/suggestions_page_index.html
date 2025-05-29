@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestions - Your App Name</title>
+    <link rel="stylesheet" href="../../style_main.css">
+    <style>
+        body {
+            background: #f7f8fa;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .left-card {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: #fff;
+            border-radius: 2.5rem;
+            margin: 2rem 1rem 2rem 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+            padding: 2.5rem 2rem;
+            min-width: 320px;
+        }
+        .left-card h2 {
+            margin-top: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+        }
+        .viewer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .viewer-list li {
+            background: #f1f5f9;
+            border-radius: 1.2rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #374151;
+            box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.06);
+        }
+        .right-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2.5rem 2rem 2.5rem 1rem;
+        }
+        .app-name {
+            align-self: flex-end;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #3b82f6;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .tab {
+            background: #e0e7ff;
+            color: #3730a3;
+            font-weight: 600;
+            border-radius: 1.5rem;
+            padding: 0.7rem 2.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.08);
+        }
+        .suggestion-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+            align-items: flex-start;
+        }
+        .suggestion-btn {
+            border: none;
+            outline: none;
+            border-radius: 2rem;
+            background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 1.2rem 0;
+            width: 33vw;
+            min-width: 260px;
+            max-width: 420px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px 0 rgba(59, 130, 246, 0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .suggestion-btn:hover {
+            background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            .left-card, .right-section {
+                margin: 1rem;
+                padding: 1.5rem;
+                min-width: unset;
+            }
+            .suggestion-btn {
+                width: 90vw;
+                max-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-card">
+            <h2>What viewers want to see</h2>
+            <ul class="viewer-list">
+                <li>Behind the scenes of your creative process</li>
+                <li>Q&A with your team</li>
+                <li>Tips for beginners in your field</li>
+                <li>Day in the life vlog</li>
+                <li>How you edit your videos</li>
+            </ul>
+        </div>
+        <div class="right-section">
+            <div class="app-name">YourAppName</div>
+            <div class="tab">Suggestions</div>
+            <div class="suggestion-buttons">
+                <button class="suggestion-btn">Suggestion 1</button>
+                <button class="suggestion-btn">Suggestion 2</button>
+                <button class="suggestion-btn">Suggestion 3</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
